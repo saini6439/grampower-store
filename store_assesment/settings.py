@@ -26,7 +26,8 @@ SECRET_KEY = '=mr$mh4j20@i5hl)=#6e8daj!dund0z9ysm20()nlqkhs%9$l&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['grampower-store.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['grampower-store.herokuapp.com','127.0.0.1','localhost']
+
 
 
 # Application definition
@@ -131,10 +132,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-#
-# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+

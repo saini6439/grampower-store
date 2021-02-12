@@ -58,9 +58,10 @@ Superuser created successfully.
 
 
 Else you can use:
+```
 Username : jagdish
 Password : admin@123
-
+```
 + Re-run the server
 ```
 python manage.py runserver

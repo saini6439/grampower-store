@@ -1,0 +1,210 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block content%}
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <h3 class="page-title">Add Store</h3>
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Default Light Table -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card card-small mb-4">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Fill details</h6>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-3">
+                      <div class="row">
+                        <div class="col">
+
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="fename">Store Name</label>
+                                 <input type="text" id="name" placeholder="Enter Store name" class="form-control" required></div>
+
+                              <div class="form-group col-md-6">
+                                <label for="feproducts">Enter Store products</label>
+                                      <input type="text" name="categoryInput" id="categoryInput" placeholder="Enter Store products" class="form-control" required>
+
+                                            <ul id="categoriesContainer">
+
+                                            </ul>
+                                 </div>
+                            </div>
+                             <label for="felat">Enter Location</label>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <input type="number" id="lat" placeholder="Enter lattitude" class="form-control" required>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <input type="number" id="long" placeholder="Enter longitude" class="form-control" required>
+                            </div>
+                            </div>
+                             <div class="form-row">
+                              <div class="form-group col-md-12">
+                                <input id="photo" type="file" multiple required>
+                              </div></div>
+                            <div class="form-row">
+                              <div class="form-group col-md-12">
+                                <label for="feabout">About store</label>
+                              <textarea id="about" placeholder="Enter about store" class="form-control" required></textarea>
+                              </div>
+                            </div>
+
+                            <div class="form-row" >
+                              <div class="form-group col-md-12">
+                                    <table width="50%" align="center">
+                                  <tbody>
+                                  <tr>
+                                      <th>Day</th>
+                                      <th>Opening</th>
+                                      <th>Closed</th>
+                                  </tr>
+                                  <tr>
+                                      <td>Sunday</td>
+                                      <td><input class="form-control" type="time" id="sundayfrom_hour"  value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="sundayto_hour" value="23:00"  min="09:00" max="18:00" required></td>
+                                  </tr>
+                                          <tr>
+                                      <td>Monday</td>
+                                      <td><input class="form-control" type="time" id="mondayfrom_hour"  value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="mondayto_hour" value="23:00" min="09:00" max="18:00" required></td>
+                                  </tr>
+                                          <tr>
+                                      <td>Tuedsay</td>
+                                      <td><input class="form-control" type="time" id="tuesdayfrom_hour" value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="tuesdayto_hour" value="23:00" min="09:00" max="18:00" required></td>
+                                  </tr>
+                                          <tr>
+                                      <td>Wednesday</td>
+                                      <td><input class="form-control" type="time" id="wednesdayfrom_hour" value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="wednesdayto_hour" value="23:00" min="09:00" max="18:00" required></td>
+                                  </tr>
+                                          <tr>
+                                      <td>Thrusday</td>
+                                      <td><input class="form-control" type="time" id="thrusdayfrom_hour" value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="thrusdayto_hour" value="23:00" min="09:00" max="18:00" required></td>
+                                  </tr>
+                                          <tr>
+                                      <td>Friday</td>
+                                      <td><input class="form-control" type="time" id="fridayfrom_hour" value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="fridayto_hour" value="23:00" min="09:00" max="18:00" required></td>
+                                  </tr>
+
+                                         <tr>
+                                      <td>Saturday</td>
+                                      <td><input class="form-control" type="time" id="saturdayfrom_hour" value="00:00" min="09:00" max="18:00" required></td>
+                                      <td><input class="form-control" type="time" id="saturdayto_hour" value="23:00" min="09:00" max="18:00" required></td>
+                                  </tr>
+
+                                  </tbody>
+                              </table>
+                              </div>
+
+                            </div>
+                             <label for="fecover">Cover Image : </label>
+                            <input id ="cover" name="cover" type="file" required>
+                             <div align="center">
+
+                              <button type="button" id="saveBtn" class="btn btn-primary from_hour-4">Submit</button>
+                            </div>
+
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- End Default Light Table -->
+          </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var files_photo = []
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.setOptions({
+            allowMultiple:true
+        })
+        const inputElement = document.querySelector('input[type="file"]');
+        const pond = FilePond.create( inputElement, {
+            acceptedFileTypes:['image/png', 'image/jpeg'],
+            onaddfile: (err, fileItem) => {
+                if (!err) {
+                files_photo.push(fileItem.file)
+                }
+                console.log(files_photo)
+            },
+            onremovefile: (err, fileItem) => {
+                const index = files_photo.indexOf(fileItem.file)
+                if (index > -1) {
+                    files_photo.splice(index, 1)
+                }
+                console.log(_photo)
+            }
+        } );
+
+        var selectedFile = [];
+        const fileInput = document.getElementById('cover');
+        fileInput.onchange = () => {
+          selectedFile.push(fileInput.files[0]);
+        }
+
+
+                var formData = new FormData();
+         $(document).on('click', '#saveBtn', function(e) {
+                 var products = fetchCategoryArray();
+            formData.append('length',files_photo.length)
+            formData.append('cover', selectedFile[0])
+            formData.append('name', $('#name').val())
+            formData.append('about', $('#about').val())
+            formData.append('products', products)
+            formData.append('lat', $('#lat').val())
+            formData.append('long', $('#long').val())
+            formData.append('sundayfrom_hour', $('#sundayfrom_hour').val())
+            formData.append('sundayto_hour', $('#sundayto_hour').val())
+            formData.append('mondayfrom_hour', $('#mondayfrom_hour').val())
+            formData.append('mondayto_hour', $('#mondayto_hour').val())
+            formData.append('tuesdayfrom_hour', $('#tuesdayfrom_hour').val())
+            formData.append('tuesdayto_hour', $('#tuesdayto_hour').val())
+            formData.append('wednesdayfrom_hour', $('#wednesdayfrom_hour').val())
+            formData.append('wednesdayto_hour', $('#wednesdayto_hour').val())
+            formData.append('thrusdayfrom_hour', $('#thrusdayfrom_hour').val())
+            formData.append('thrusdayto_hour', $('#thrusdayto_hour').val())
+            formData.append('fridayfrom_hour', $('#fridayfrom_hour').val())
+            formData.append('fridayto_hour', $('#fridayto_hour').val())
+            formData.append('saturdayfrom_hour', $('#saturdayfrom_hour').val())
+            formData.append('saturdayto_hour', $('#saturdayto_hour').val())
+
+            for (var i = 0; i < files_photo.length; i++) {
+                formData.append('images' + i, files_photo[i])
+            }
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            $.ajax({
+                type: 'POST',
+                url: '{% url "create_store" %}',
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                success: function (){
+                   window.location.replace("/");
+                },
+                error: function(xhr, errmsg, err) {
+                    console.log(xhr.status + ":" + xhr.responseText);
+                    alert("Please fill all details");
+                }
+            })
+        })
+    })
+</script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock%}

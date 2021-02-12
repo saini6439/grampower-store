@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              </div>
+                <form action="." method="post"> {% csrf_token %}
+                    <h1>Do you want to delete</h1>
+                      <div class="my-auto ml-auto">
+                    <p><input class="btn btn-sm btn-white" type="submit" value="yes"/><a href="{% url 'home'%}">Cancel</a></p></a>
+                    </div>
+                </form>
+
+            </div>
+          </div>
+{% endblock %}
